@@ -1,0 +1,2 @@
+class TenderersController < ApplicationController
+end

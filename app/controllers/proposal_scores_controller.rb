@@ -1,0 +1,2 @@
+class ProposalScoresController < ApplicationController
+end

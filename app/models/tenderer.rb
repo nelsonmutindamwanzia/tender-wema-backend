@@ -1,0 +1,2 @@
+class Tenderer < ApplicationRecord
+end
