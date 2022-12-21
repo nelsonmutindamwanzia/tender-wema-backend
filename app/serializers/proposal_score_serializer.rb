@@ -1,3 +1,3 @@
 class ProposalScoreSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :quality, :maintenance, :completion_period, :price, :proposal_id 
 end
