@@ -1,3 +1,3 @@
 class TendererSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :email
 end
