@@ -25,6 +25,15 @@ development:
   <<: *default
   database: tender_wema_development
 
+# development:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: myapp_dev
+#   host: localhost
+#   pool: 5
+#   username: dyes
+#   password: 1234
+
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -59,6 +68,15 @@ test:
   <<: *default
   database: tender_wema_test
 
+# test:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: myapp_test
+#   host: localhost
+#   pool: 5
+#   username: dyes
+#   password: 1234
+
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -84,3 +102,6 @@ production:
   database: tender_wema_production
   username: tender_wema
   password: <%= ENV["TENDER_WEMA_DATABASE_PASSWORD"] %>
+
+  
+
