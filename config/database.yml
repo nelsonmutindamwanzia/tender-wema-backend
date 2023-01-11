@@ -98,10 +98,8 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: tender_wema_production
-  username: tender_wema
-  password: <%= ENV["TENDER_WEMA_DATABASE_PASSWORD"] %>
-
-  
-
+  # <<: *default
+  # database: tender_wema_production
+  # username: tender_wema
+  # password: <%= ENV["TENDER_WEMA_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
