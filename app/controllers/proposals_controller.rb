@@ -5,7 +5,7 @@ class ProposalsController < ApplicationController
 
     def show
         proposal = find_proposal
-        render json: proposal
+        render json: proposal, include: ['suppliers', 'tenders']
     end
 
     def create
