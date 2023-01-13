@@ -29,7 +29,6 @@ bank_images = ["https://i.pinimg.com/236x/64/82/5a/64825ae27a10a20f255bae6fa8dc2
 
 amount = [10000, 5000, 18000]
 supplier_id = [1, 2, 3]
-tender_id= [3, 2, 1]
 
 puts "🌱 Seeding Tenderers..."
 3.times do
@@ -90,7 +89,7 @@ puts "🌱 Seeding Proposals..."
         proposal_amount: amount[i],
         status: false,
         supplier_id: supplier_id[i],
-        tender_id: tender_id[i]
+        tender_id: 1
         )
 end
 
