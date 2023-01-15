@@ -1,13 +1,14 @@
 class SuppliersController < ApplicationController
-    before_action :authorize, only: [:show]
+    # before_action :authorize, only: [:show]
+    skip_before_action :authorized, only: [:create]
 
     def create 
         supplier = Supplier.create(supplier_params)
-        session[:supplier_id] = supplier.id
         if supplier.valid?
-            render json: supplier, status: :created
+            token = encode_token(supplier_id: supplier.id)
+            render json: { supplier: SupplierSerializer.new(supplier), jwt: token }, status: :created
         else 
-            render json: {error: supplier.errors.full_messages}, status: :unprocessable_entity
+            render json: { error: 'failed to create user' }, status: :unprocessable_entity
         end
     end
 
@@ -20,10 +21,15 @@ class SuppliersController < ApplicationController
         render json: Supplier.all
     end
 
+    def profile
+        render json: @supplier
+    end
+
     private
 
     def supplier_params
-        params.permit( :email, :password, :password_confirmation, :company_name, :company_address, :company_telephone)
+        params.require(:supplier).permit( :email, :password, :password_confirmation, :company_name, :company_address, :company_telephone)
+        #params.permit( :email, :password, :password_confirmation, :company_name, :company_address, :company_telephone)
     end
 
     def authorize 
