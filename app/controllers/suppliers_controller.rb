@@ -1,6 +1,6 @@
 class SuppliersController < ApplicationController
     # before_action :authorize, only: [:show]
-    skip_before_action :authorized, only: [:create]
+    skip_before_action :authorized, only: [:create, :index, :show]
 
     def create 
         supplier = Supplier.create(supplier_params)
@@ -13,8 +13,8 @@ class SuppliersController < ApplicationController
     end
 
     def show
-        supplier = Supplier.find_by(id: session[:supplier_id])
-        render json: supplier
+        supplier = find_supplier
+        render json: supplier, status: :ok
     end
 
     def index
@@ -32,7 +32,7 @@ class SuppliersController < ApplicationController
         #params.permit( :email, :password, :password_confirmation, :company_name, :company_address, :company_telephone)
     end
 
-    def authorize 
-        return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :supplier_id
+    def find_supplier
+        Supplier.find(params[:id])
     end
 end
