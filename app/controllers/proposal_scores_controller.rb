@@ -1,5 +1,7 @@
 class ProposalScoresController < ApplicationController
     
+    skip_before_action :authorized, only: [:create, :index, :show]
+
     def index
         render json: ProposalScore.all
     end

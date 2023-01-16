@@ -1,4 +1,7 @@
 class ProposalsController < ApplicationController
+
+    skip_before_action :authorized, only: [:create, :index, :show]
+
     def index
         render json: Proposal.all
     end

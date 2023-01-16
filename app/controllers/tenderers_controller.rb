@@ -1,5 +1,6 @@
 class TenderersController < ApplicationController
-        before_action :authorize, only: [:show]
+        # before_action :authorize, only: [:show]
+        skip_before_action :authorized, only: [:create, :index, :show]
     
         def create 
             tenderer = Tenderer.create(tenderer_params)
@@ -12,8 +13,8 @@ class TenderersController < ApplicationController
         end
     
         def show
-            tenderer = Tenderer.find_by(id: session[:tenderer_id])
-            render json: tenderer
+            tenderer = find_tenderer
+            render json: tenderer, status: :ok
         end
     
         def index
@@ -26,8 +27,7 @@ class TenderersController < ApplicationController
             params.permit( :email, :password, :password_confirmation, :company_name, :company_address, :company_telephone)
         end
     
-        def authorize 
-            return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :tenderer_id
+        def find_tenderer
+            Tenderer.find(params[:id])
         end
-    
 end
