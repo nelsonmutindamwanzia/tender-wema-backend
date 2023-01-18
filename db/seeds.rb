@@ -107,7 +107,9 @@ proposal = [1,2,3]
         maintenance: maintenance[i],
         completion_period: completion[i],
         price: price[i],
-        proposal_id: proposal[i]
+        proposal_id: proposal[i],
+        tender_id: 1,
+        supplier_id: supplier_id[i]
     )
 end
 

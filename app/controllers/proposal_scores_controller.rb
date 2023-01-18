@@ -8,7 +8,7 @@ class ProposalScoresController < ApplicationController
 
     def show
         proposal_score = find_proposal_score
-        render json: proposal_score
+        render json: proposal_score, include: ['suppliers', 'tenders']
     end
 
     def create
