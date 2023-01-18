@@ -1,6 +1,6 @@
 class TendersController < ApplicationController
 
-    skip_before_action :authorized, only: [:create, :index, :show]
+    skip_before_action :authorized, only: [:create, :index, :show, :destroy]
     
     def index
         render json: Tender.all
