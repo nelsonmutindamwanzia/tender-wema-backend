@@ -32,8 +32,16 @@ class ApplicationController < ActionController::API
         end
     end
 
+    def current_user_tenderer
+        if decoded_token
+            tenderer_id = decoded_token[0]['tenderer_id']
+            @tenderer = Tenderer.find_by(id: tenderer_id)
+        end
+    end
+
     def logged_in?
         !!current_user
+        !!current_user_tenderer
     end
 
     def authorized
