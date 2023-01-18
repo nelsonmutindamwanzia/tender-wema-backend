@@ -8,7 +8,7 @@ class SuppliersController < ApplicationController
             token = encode_token(supplier_id: supplier.id)
             render json: { supplier: SupplierSerializer.new(supplier), jwt: token }, status: :created
         else 
-            render json: { error: 'failed to create user' }, status: :unprocessable_entity
+            render json: { error: 'Failed to create Supplier' }, status: :unprocessable_entity
         end
     end
 
