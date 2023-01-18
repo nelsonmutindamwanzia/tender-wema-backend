@@ -3,4 +3,5 @@ class TenderSerializer < ActiveModel::Serializer
 
   belongs_to :tenderer
   has_many :proposals
+  has_many :proposal_scores
 end
