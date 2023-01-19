@@ -21,7 +21,7 @@ class TenderersController < ApplicationController
         render json: Tenderer.all
     end
 
-    def profile
+    def tenderer_profile
         render json: @tenderer
     end
 

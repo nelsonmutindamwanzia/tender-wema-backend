@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   #tenderer auth
   post '/tenderer-login', to: 'tenderer_auth#create'
-  get '/tenderer-profile', to: 'tenderers#profile'
+  get '/tenderer-profile', to: 'tenderers#tenderer_profile'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
